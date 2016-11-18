@@ -51,7 +51,7 @@ $ npm start
 
 #generate api documentation
 $ npm run compodoc
-$ npm serve.compodoc
+$ npm run serve.compodoc
 
 
 # to start deving with livereload site and coverage as well as continuous testing
