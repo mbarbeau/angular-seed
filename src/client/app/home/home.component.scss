@@ -1,6 +1,9 @@
+$color-red: #ffff99;
+
 :host {
   display: block;
   padding: 0 16px;
+  color: $color-red;
 }
 
 input {
