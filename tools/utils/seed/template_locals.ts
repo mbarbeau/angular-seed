@@ -10,7 +10,7 @@ const getConfig = (path: string, env: string): any => {
   try {
     config = JSON.parse(JSON.stringify(require(configPath)));
   } catch (e) {
-    config = null;
+    config = undefined;
     util.log(util.colors.red(e.message));
   }
 
@@ -35,4 +35,3 @@ export function templateLocals() {
     ENV_CONFIG: JSON.stringify(Object.assign(baseConfig, config))
   });
 }
-

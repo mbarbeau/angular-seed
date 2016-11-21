@@ -4,10 +4,10 @@ import { join } from 'path';
 import Config from '../../config';
 
 // TODO There should be more elegant to prevent empty directories from copying
-var onlyDirs = function (es: any) {
+let onlyDirs = function (es: any) {
   return es.map(function (file: any, cb: any) {
     if (file.stat.isFile()) {
-      return cb(null, file);
+      return cb(undefined, file);
     } else {
       return cb();
     }

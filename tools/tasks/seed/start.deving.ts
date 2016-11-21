@@ -15,13 +15,13 @@ function watchAppFiles(path: string, fileChangeCallback: (e: any, done: () => vo
     join(Config.APP_SRC, path)
   ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
 
-  let busyWithCall : boolean = false;
-  let changesWaiting : any = null;
+  let busyWithCall: boolean = false;
+  let changesWaiting: any = undefined;
   let afterCall = () => {
     busyWithCall = false;
     if (changesWaiting) {
       fileChangeCallback(changesWaiting, afterCall);
-      changesWaiting = null;
+      changesWaiting = undefined;
     }
   };
   plugins.watch(paths, (e: any) => {

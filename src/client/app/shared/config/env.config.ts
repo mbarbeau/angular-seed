@@ -1,9 +1,8 @@
 // Feel free to extend this interface
 // depending on your app specific config.
-export interface EnvConfig {
+export interface IEnvConfig {
   API?: string;
   ENV?: string;
 }
 
-export const Config: EnvConfig = JSON.parse('<%= ENV_CONFIG %>');
-
+export const Config: IEnvConfig = JSON.parse('<%= ENV_CONFIG %>');

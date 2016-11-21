@@ -2,7 +2,7 @@ import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
-import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
+import { IBuildType, IExtendPackages, InjectableDependency } from './seed.config.interfaces';
 
 /************************* DO NOT CHANGE ************************
  *
@@ -18,13 +18,14 @@ import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.i
  * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
  * 2) https://github.com/mgechev/angular2-seed/wiki
  *
- *****************************************************************/
+ * ****************************************************************
+ */
 
 /**
  * The enumeration of available environments.
  * @type {Environments}
  */
-export const BUILD_TYPES: BuildType = {
+export const BUILD_TYPES: IBuildType = {
   DEVELOPMENT: 'dev',
   PRODUCTION: 'prod'
 };
@@ -48,46 +49,46 @@ export class SeedConfig {
    * The default port is `5555`, which can be overriden by the  `--port` flag when running `npm start`.
    * @type {number}
    */
-  PORT = argv['port'] || 5555;
+  PORT: number = argv['port'] || 5555;
 
   /**
    * The root folder of the project (up two levels from the current directory).
    */
-  PROJECT_ROOT = join(__dirname, '../..');
+  PROJECT_ROOT: string = join(__dirname, '../..');
 
   /**
    * The current build type.
    * The default build type is `dev`, which can be overriden by the `--build-type dev|prod` flag when running `npm start`.
    */
-  BUILD_TYPE = getBuildType();
+  BUILD_TYPE: string = getBuildType();
 
   /**
    * The flag for the debug option of the application.
    * The default value is `false`, which can be overriden by the `--debug` flag when running `npm start`.
    * @type {boolean}
    */
-  DEBUG = argv['debug'] || false;
+  DEBUG: boolean = argv['debug'] || false;
 
   /**
    * The port where the documentation application will run.
    * The default docs port is `4003`, which can be overriden by the `--docs-port` flag when running `npm start`.
    * @type {number}
    */
-  DOCS_PORT = argv['docs-port'] || 4003;
+  DOCS_PORT: number = argv['docs-port'] || 4003;
 
   /**
    * The port where the unit test coverage report application will run.
    * The default coverage port is `4004`, which can by overriden by the `--coverage-port` flag when running `npm start`.
    * @type {number}
    */
-  COVERAGE_PORT = argv['coverage-port'] || 4004;
+  COVERAGE_PORT: number = argv['coverage-port'] || 4004;
 
   /**
-  * The path to the coverage output
-  * NB: this must match what is configured in ./karma.conf.js
-  */
-  COVERAGE_DIR = 'coverage_js';
-  COVERAGE_TS_DIR = 'coverage';
+   * The path to the coverage output
+   * NB: this must match what is configured in ./karma.conf.js
+   */
+  COVERAGE_DIR: string = 'coverage_js';
+  COVERAGE_TS_DIR: string = 'coverage';
 
   /**
    * The path for the base of the application at runtime.
@@ -95,13 +96,13 @@ export class SeedConfig {
    * which can be overriden by the `--base` flag when running `npm start`.
    * @type {string}
    */
-  APP_BASE = argv['base'] || '/';
+  APP_BASE: string = argv['base'] || '/';
 
   /**
    * The base path of node modules.
    * @type {string}
    */
-  NPM_BASE = slash(join('.', this.APP_BASE, 'node_modules/'));
+  NPM_BASE: string = slash(join('.', this.APP_BASE, 'node_modules/'));
 
   /**
    * The build interval which will force the TypeScript compiler to perform a typed compile run.
@@ -112,181 +113,181 @@ export class SeedConfig {
    * The default value is `0`, meaning typed compilation will always be performed.
    * @type {number}
    */
-  TYPED_COMPILE_INTERVAL = 0;
+  TYPED_COMPILE_INTERVAL: number = 0;
 
   /**
    * The directory where the bootstrap file is located.
    * The default directory is `app`.
    * @type {string}
    */
-  BOOTSTRAP_DIR = argv['app'] || 'app';
+  BOOTSTRAP_DIR: string = argv['app'] || 'app';
 
   /**
    * The directory where the client files are located.
    * The default directory is `client`.
    * @type {string}
    */
-  APP_CLIENT = argv['client'] || 'client';
+  APP_CLIENT: string = argv['client'] || 'client';
 
   /**
    * The bootstrap file to be used to boot the application.
    * @type {string}
    */
-  BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}/main`;
+  BOOTSTRAP_MODULE: string = `${this.BOOTSTRAP_DIR}/main`;
 
-  BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + 'main';
+  BOOTSTRAP_PROD_MODULE: string = `${this.BOOTSTRAP_DIR}/` + 'main';
 
-  NG_FACTORY_FILE = 'main-prod';
+  NG_FACTORY_FILE: string = 'main-prod';
 
-  BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}/${this.NG_FACTORY_FILE}`;
+  BOOTSTRAP_FACTORY_PROD_MODULE: string = `${this.BOOTSTRAP_DIR}/${this.NG_FACTORY_FILE}`;
   /**
    * The default title of the application as used in the `<title>` tag of the
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to angular2-seed!';
+  APP_TITLE: string = 'Welcome to angular2-seed!';
 
   /**
    * The base folder of the applications source files.
    * @type {string}
    */
-  APP_SRC = `src/${this.APP_CLIENT}`;
+  APP_SRC: string = `src/${this.APP_CLIENT}`;
 
   /**
    * The name of the TypeScript project file
    * @type {string}
    */
-  APP_PROJECTNAME = 'tsconfig.json';
+  APP_PROJECTNAME: string = 'tsconfig.json';
 
   /**
    * The folder of the applications asset files.
    * @type {string}
    */
-  ASSETS_SRC = `${this.APP_SRC}/assets`;
+  ASSETS_SRC: string = `${this.APP_SRC}/assets`;
 
   /**
    * The folder of the applications css files.
    * @type {string}
    */
-  CSS_SRC = `${this.APP_SRC}/css`;
+  CSS_SRC: string = `${this.APP_SRC}/css`;
 
   /**
    * The folder of the e2e specs and framework
    */
-  E2E_SRC = 'src/e2e';
+  E2E_SRC: string = 'src/e2e';
 
   /**
    * The folder of the applications scss files.
    * @type {string}
    */
-  SCSS_SRC = `${this.APP_SRC}/scss`;
+  SCSS_SRC: string = `${this.APP_SRC}/scss`;
 
   /**
    * The directory of the applications tools
    * @type {string}
    */
-  TOOLS_DIR = 'tools';
+  TOOLS_DIR: string = 'tools';
 
   /**
    * The directory of the tasks provided by the seed.
    */
-  SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');
+  SEED_TASKS_DIR: string = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');
 
   /**
    * The destination folder for the generated documentation.
    * @type {string}
    */
-  DOCS_DEST = 'docs';
+  DOCS_DEST: string = 'docs';
 
   /**
    * The base folder for built files.
    * @type {string}
    */
-  DIST_DIR = 'dist';
+  DIST_DIR: string = 'dist';
 
   /**
    * The folder for built files in the `dev` environment.
    * @type {string}
    */
-  DEV_DEST = `${this.DIST_DIR}/dev`;
+  DEV_DEST: string = `${this.DIST_DIR}/dev`;
 
   /**
    * The folder for the built files in the `prod` environment.
    * @type {string}
    */
-  PROD_DEST = `${this.DIST_DIR}/prod`;
+  PROD_DEST: string = `${this.DIST_DIR}/prod`;
 
   /**
    * The folder for the built files of the e2e-specs.
    * @type {string}
    */
-  E2E_DEST = `${this.DIST_DIR}/e2e`;
+  E2E_DEST: string = `${this.DIST_DIR}/e2e`;
 
   /**
    * The folder for temporary files.
    * @type {string}
    */
-  TMP_DIR = `${this.DIST_DIR}/tmp`;
+  TMP_DIR: string = `${this.DIST_DIR}/tmp`;
 
   /**
    * The folder for the built files, corresponding to the current environment.
    * @type {string}
    */
-  APP_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_DEST : this.PROD_DEST;
+  APP_DEST: string = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_DEST : this.PROD_DEST;
 
   /**
    * The folder for the built CSS files.
    * @type {strings}
    */
-  CSS_DEST = `${this.APP_DEST}/css`;
+  CSS_DEST: string = `${this.APP_DEST}/css`;
 
   /**
    * The folder for the built JavaScript files.
    * @type {string}
    */
-  JS_DEST = `${this.APP_DEST}/js`;
+  JS_DEST: string = `${this.APP_DEST}/js`;
 
   /**
    * The version of the application as defined in the `package.json`.
    */
-  VERSION = appVersion();
+  VERSION: string | number = appVersion();
 
   /**
    * The name of the bundle file to includes all CSS files.
    * @type {string}
    */
-  CSS_PROD_BUNDLE = 'main.css';
+  CSS_PROD_BUNDLE: string = 'main.css';
 
   /**
    * The name of the bundle file to include all JavaScript shims.
    * @type {string}
    */
-  JS_PROD_SHIMS_BUNDLE = 'shims.js';
+  JS_PROD_SHIMS_BUNDLE: string = 'shims.js';
 
   /**
    * The name of the bundle file to include all JavaScript application files.
    * @type {string}
    */
-  JS_PROD_APP_BUNDLE = 'app.js';
+  JS_PROD_APP_BUNDLE: string = 'app.js';
 
   /**
    * The required NPM version to run the application.
    * @type {string}
    */
-  VERSION_NPM = '2.14.2';
+  VERSION_NPM: string = '2.14.2';
 
   /**
    * The required NodeJS version to run the application.
    * @type {string}
    */
-  VERSION_NODE = '4.0.0';
+  VERSION_NODE: string = '4.0.0';
 
   /**
    * Enable SCSS stylesheet compilation.
    * Set ENABLE_SCSS environment variable to 'true' or '1'
    * @type {boolean}
    */
-  ENABLE_SCSS = ['true', '1'].indexOf(`${process.env.ENABLE_SCSS}`.toLowerCase()) !== -1 || argv['scss'] || false;
+  ENABLE_SCSS: boolean = ['true', '1'].indexOf(`${process.env.ENABLE_SCSS}`.toLowerCase()) !== -1 || argv['scss'] || false;
 
   /**
    * The list of NPM dependcies to be injected in the `index.html`.
@@ -323,8 +324,8 @@ export class SeedConfig {
    * @return {InjectableDependency[]} The array of npm dependencies and assets.
    */
   get DEPENDENCIES(): InjectableDependency[] {
-    return normalizeDependencies(this.NPM_DEPENDENCIES.filter(filterDependency.bind(null, this.BUILD_TYPE)))
-      .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.BUILD_TYPE)));
+    return normalizeDependencies(this.NPM_DEPENDENCIES.filter(filterDependency.bind(undefined, this.BUILD_TYPE)))
+      .concat(this.APP_ASSETS.filter(filterDependency.bind(undefined, this.BUILD_TYPE)));
   }
 
   /**
@@ -438,7 +439,7 @@ export class SeedConfig {
    * The Autoprefixer configuration for the application.
    * @type {Array}
    */
-  BROWSER_LIST = [
+  BROWSER_LIST: string[] = [
     'ie >= 10',
     'ie_mob >= 10',
     'ff >= 30',
@@ -577,14 +578,14 @@ export class SeedConfig {
     if (this.PLUGIN_CONFIGS[pluginKey]) {
       return this.PLUGIN_CONFIGS[pluginKey];
     }
-    return null;
+    return undefined;
   }
 
   getInjectableStyleExtension() {
     return this.BUILD_TYPE === BUILD_TYPES.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
   }
 
-  addPackageBundles(pack: ExtendPackages) {
+  addPackageBundles(pack: IExtendPackages) {
 
     if (pack.path) {
       this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
@@ -597,9 +598,9 @@ export class SeedConfig {
     }
   }
 
-  addPackagesBundles(packs: ExtendPackages[]) {
+  addPackagesBundles(packs: IExtendPackages[]) {
 
-    packs.forEach((pack: ExtendPackages) => {
+    packs.forEach((pack: IExtendPackages) => {
       this.addPackageBundles(pack);
     });
 
@@ -641,7 +642,7 @@ function filterDependency(type: string, d: InjectableDependency): boolean {
  * @return {number} The applications version.
  */
 function appVersion(): number | string {
-  var pkg = require('../../package.json');
+  let pkg = require('../../package.json');
   return pkg.version;
 }
 

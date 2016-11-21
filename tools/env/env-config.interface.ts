@@ -1,2 +1,2 @@
-export { EnvConfig } from '../../src/client/app/shared/config/env.config';
+export { IEnvConfig } from '../../src/client/app/shared/config/env.config';
 

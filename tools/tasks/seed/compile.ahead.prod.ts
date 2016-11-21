@@ -24,7 +24,7 @@ export = (done: any) => {
     const parsed = JSON.parse(content);
     parsed.files = parsed.files || [];
     parsed.files.push(join(Config.BOOTSTRAP_DIR, 'main.ts'));
-    return JSON.stringify(parsed, null, 2);
+    return JSON.stringify(parsed, undefined, 2);
   });
   const args = argv;
 

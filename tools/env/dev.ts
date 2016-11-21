@@ -1,6 +1,6 @@
-import { EnvConfig } from './env-config.interface';
+import { IEnvConfig } from './env-config.interface';
 
-const DevConfig: EnvConfig = {
+const DevConfig: IEnvConfig = {
   ENV: 'DEV'
 };
 

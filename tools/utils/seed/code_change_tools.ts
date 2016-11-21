@@ -5,7 +5,7 @@ import Config from '../../config';
 
 class ChangeFileManager {
   private _files: string[] = [];
-  private _pristine = true;
+  private _pristine: boolean = true;
 
   get lastChangedFiles() {
     return this._files.slice();

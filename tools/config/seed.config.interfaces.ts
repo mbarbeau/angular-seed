@@ -8,13 +8,13 @@ export interface InjectableDependency {
   env?: string[] | string;
 }
 
-export interface BuildType {
+export interface IBuildType {
   DEVELOPMENT: string;
   PRODUCTION: string;
   [key: string]: string;
 }
 
-export interface ExtendPackages {
+export interface IExtendPackages {
   name: string;
   path?: string;
   packageMeta?: any;

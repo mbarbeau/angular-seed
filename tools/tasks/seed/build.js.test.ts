@@ -42,7 +42,7 @@ export =
         projectFiles = merge(typings, projectFiles);
       }
 
-      //noinspection TypeScriptUnresolvedFunction
+      // noinspection TypeScriptUnresolvedFunction
       result = projectFiles
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
