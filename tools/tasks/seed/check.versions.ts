@@ -16,7 +16,7 @@ export = () => {
 
   exec('npm --version',
     function(error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
-      if (error !== undefined) {
+      if (error !== null) {
         reportError('npm preinstall error: ' + error + stderr);
       }
 
@@ -27,7 +27,7 @@ export = () => {
 
   exec('node --version',
     function(error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
-      if (error !== undefined) {
+      if (error !== null) {
         reportError('npm preinstall error: ' + error + stderr);
       }
 
