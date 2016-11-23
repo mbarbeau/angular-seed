@@ -2,9 +2,9 @@ import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterCon
 
 declare let ol: any;
 
-declare var module: {
+/*declare var module: {
    id: string;
-};
+};*/
 
 /*
 import { Ng2ol3MapService, Ng2ol3SidebarService } from '../../services/@index';

@@ -2,4 +2,3 @@
 System.config({
   baseURL: '/base/'
 });
-

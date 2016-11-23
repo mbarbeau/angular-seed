@@ -46,8 +46,9 @@ export function main() {
 
             let homeInstance = fixture.debugElement.children[0].componentInstance;
             let homeDOMEl = fixture.debugElement.children[0].nativeElement;
+            expect(homeDOMEl.querySelectorAll('igo-map').length).toEqual(1);
 
-            expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
+            /*expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
             expect(homeDOMEl.querySelectorAll('li').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
@@ -56,7 +57,7 @@ export function main() {
             fixture.detectChanges();
 
             expect(homeDOMEl.querySelectorAll('li').length).toEqual(1);
-            expect(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
+            expect(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');*/
           });
 
       }));
