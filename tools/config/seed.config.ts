@@ -1,6 +1,7 @@
 import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
+import * as util from 'gulp-util';
 
 import { IBuildType, IExtendPackages, InjectableDependency } from './seed.config.interfaces';
 
@@ -29,6 +30,24 @@ export const BUILD_TYPES: IBuildType = {
   DEVELOPMENT: 'dev',
   PRODUCTION: 'prod'
 };
+
+
+const getConfig = (path: string): any => {
+  let config: any;
+  try {
+    config = require(path);
+  } catch (e) {
+    config = undefined;
+  }
+  if (!config) {
+    util.log(util.colors.red(`Cannot find ${path}`));
+  }
+  return config;
+};
+
+const configJsonBase = getConfig('../env/base.ts');
+const configJsonEnv = getConfig(`../env/${getBuildType()}.ts`);
+const configJson = Object.assign({}, configJsonBase, configJsonEnv);
 
 /**
  * This class represents the basic configuration of the seed.
@@ -96,7 +115,7 @@ export class SeedConfig {
    * which can be overriden by the `--base` flag when running `npm start`.
    * @type {string}
    */
-  APP_BASE: string = argv['base'] || '/';
+  APP_BASE: string = argv['base'] || configJson.APP_BASE || '/';
 
   /**
    * The base path of node modules.
@@ -490,7 +509,7 @@ export class SeedConfig {
     },
 
     // Note: you can customize the location of the file
-    'environment-config': join(this.PROJECT_ROOT, this.TOOLS_DIR, 'env'),
+    'environment-config': join(this.PROJECT_ROOT, this.TOOLS_DIR, 'env'), // configJson,
 
     /**
      * The options to pass to gulp-sass (and then to node-sass).
