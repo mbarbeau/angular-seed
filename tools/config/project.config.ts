@@ -25,6 +25,8 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
+      {src: 'openlayers/dist/ol-debug.js', inject: 'libs'},
+      {src: 'openlayers/dist/ol-debug.css', inject: true}
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
