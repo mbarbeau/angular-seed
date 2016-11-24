@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/index';
+import { Router, ActivatedRoute, Params } from '@angular/router'
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   newName: string = '';
   errorMessage: string;
   names: any[] = [];
+  contextId: string;
 
   /**
    * Creates an instance of the HomeComponent with the injected
@@ -22,7 +24,13 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              public nameListService: NameListService) {
+    this.route.params.subscribe((params: Params) => this.contextId = params['id']);
+    console.log(this);
+
+  }
 
   /**
    * Get the names OnInit

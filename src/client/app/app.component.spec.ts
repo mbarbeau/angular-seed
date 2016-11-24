@@ -55,7 +55,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>'
+  template: '<igo-app></igo-app>'
 })
 
 class TestComponent {
