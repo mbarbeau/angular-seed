@@ -41,6 +41,8 @@ module.exports = function (config) {
       // Externes libs
       'node_modules/openlayers/dist/ol-debug.js',
 
+      { pattern: 'node_modules/angular2-jwt/**/*.js', included: false, watched: false },
+
       // RxJs.
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
