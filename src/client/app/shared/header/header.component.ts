@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import {AuthService} from "../../shared";
 
 /**
  * This class represents the header component.
@@ -13,4 +14,12 @@ export class HeaderComponent {
   protected title: string = "<%= APP_TITLE %>";
   protected version: string = "<%= VERSION %>";
 
+  /*constructor(public auth: AuthService) { }
+
+  private get userName() {
+    if (!this.auth.isAuthenticated) {
+      return "";
+    }
+    return this.auth.decodeToken().nom;
+  }*/
 }

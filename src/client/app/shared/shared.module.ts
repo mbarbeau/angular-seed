@@ -6,14 +6,17 @@ import { HeaderComponent } from './header/index';
 import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
 
+import { AuthModule } from './auth/auth.module';
+
+
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CoreModule],
+  imports: [CoreModule, AuthModule],
   declarations: [HeaderComponent, NavbarComponent],
-  exports: [CoreModule, HeaderComponent, NavbarComponent]
+  exports: [CoreModule, AuthModule, HeaderComponent, NavbarComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
