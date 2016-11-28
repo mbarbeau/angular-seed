@@ -3,6 +3,8 @@ import { join } from 'path';
 import { SeedConfig } from './seed.config';
 // import { ExtendPackages } from './seed.config.interfaces';
 
+const proxy = require('proxy-middleware');
+
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
  * below.
@@ -15,10 +17,24 @@ export class ProjectConfig extends SeedConfig {
 
   constructor() {
     super();
-    // this.APP_TITLE = 'Put name of your app here';
+    this.APP_TITLE = 'IGO 2';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
+
+    let api = this.PLUGIN_CONFIGS['environment-config']['API'];
+    if (api) {
+      this.PLUGIN_CONFIGS['browser-sync']['middleware'] = [
+        proxy({
+          protocol: api['protocol'],
+          hostname: api['host'],
+          port: api['port'] || 80,
+          pathname: api['path'],
+          route: `${this.APP_BASE}api`
+        }),
+        ...this.PLUGIN_CONFIGS['browser-sync']['middleware']
+      ];
+    }
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
