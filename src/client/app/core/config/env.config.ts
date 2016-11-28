@@ -1,6 +1,5 @@
 // Feel free to extend this interface
 // depending on your app specific config.
-
 interface IApi {
   protocol: string;
   host: string;

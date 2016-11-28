@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+
+import { CoreModule } from "../core";
 
 import { HeaderComponent } from './header/index';
 import { NavbarComponent } from './navbar/index';
@@ -12,10 +11,9 @@ import { NameListService } from './name-list/index';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CoreModule],
   declarations: [HeaderComponent, NavbarComponent],
-  exports: [HeaderComponent, NavbarComponent,
-    CommonModule, FormsModule, RouterModule]
+  exports: [CoreModule, HeaderComponent, NavbarComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
