@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute, Params } from '@angular/router';
 import {
   async
 } from '@angular/core/testing';
@@ -25,6 +25,16 @@ export function main() {
         declarations: [TestComponent],
         providers: [
           NameListService,
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              params: {
+                subscribe: ((fn: (value: Params) => void) => fn({
+                  yourData: 'yolo'
+                }))
+              }
+            }
+          },
           BaseRequestOptions,
           MockBackend,
           {provide: Http, useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
