@@ -521,7 +521,9 @@ export class SeedConfig {
     },
 
     // Note: you can customize the location of the file
-    'environment-config': join(this.PROJECT_ROOT, this.TOOLS_DIR, 'env'), // configJson,
+    'environment-config': join(this.PROJECT_ROOT, this.TOOLS_DIR, 'env'),
+
+    'environment-config-json': configJson,
 
     /**
      * The options to pass to gulp-sass (and then to node-sass).

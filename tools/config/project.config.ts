@@ -28,7 +28,7 @@ export class ProjectConfig extends SeedConfig {
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
-    let api = this.PLUGIN_CONFIGS['environment-config']['API'];
+    let api = this.PLUGIN_CONFIGS['environment-config-json']['API'];
     if (api) {
       this.PLUGIN_CONFIGS['browser-sync']['middleware'] = [
         proxy({

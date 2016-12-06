@@ -7,7 +7,7 @@ const DevConfig: IEnvConfig = {
     protocol: "http:",
     host: "spssogl97d.sso.msp.gouv.qc.ca",
     port: 80,
-    path: "/gespa/api"
+    path: "/gespa/api/"
   }
 };
 
