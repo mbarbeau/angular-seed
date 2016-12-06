@@ -24,9 +24,6 @@ export abstract class AuthRestService {
 
     return this.authHttp.get(this.url, {
       headers: myHeader,
-      body: '', // TODO: FIX temporaire:
-      // https://github.com/auth0/angular2-jwt/issues/125
-      // https://github.com/angular/angular/issues/10612
       search: this.objToParams(params)
     }).map(res => {
       if (res.status === 204) {
@@ -43,9 +40,6 @@ export abstract class AuthRestService {
     myHeader.append("Content-Type", "application/json");
 
     return this.authHttp.get(`${this.url}/${id}`, {
-      body: '', // TODO: FIX temporaire:
-      // https://github.com/auth0/angular2-jwt/issues/125
-      // https://github.com/angular/angular/issues/10612
       headers: myHeader
     }).map(res => res.json())
       .do(this.handleEyeball)
@@ -78,9 +72,6 @@ export abstract class AuthRestService {
 
     return this.authHttp.delete(`${this.url}/${id}`, {
       headers: myHeader,
-      body: '', // TODO: FIX temporaire:
-      // https://github.com/auth0/angular2-jwt/issues/125
-      // https://github.com/angular/angular/issues/10612
     }).map(res => res.json())
       .do(this.handleEyeball)
       .catch(this.handleError);

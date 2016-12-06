@@ -20,9 +20,6 @@ export class BaseRestService {
     }
 
     return this.http.get(this.url, {
-      body: '', // TODO: FIX temporaire:
-      // https://github.com/auth0/angular2-jwt/issues/125
-      // https://github.com/angular/angular/issues/10612
       headers: myHeader,
       search: this.objToParams(params)
     }).map(res => res.json())
@@ -35,9 +32,6 @@ export class BaseRestService {
     myHeader.append("Content-Type", "application/json");
 
     return this.http.get(`${this.url}/${id}`, {
-      body: '', // TODO: FIX temporaire:
-      // https://github.com/auth0/angular2-jwt/issues/125
-      // https://github.com/angular/angular/issues/10612
       headers: myHeader
     }).map(res => res.json())
       .do(this.handleEyeball)
