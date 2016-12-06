@@ -48,7 +48,7 @@ $ npm start
 # api document for the app
 # npm run build.docs
 
-#generate api documentation
+# generate api documentation
 $ npm run compodoc
 $ npm run serve.compodoc
 

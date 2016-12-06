@@ -55,8 +55,6 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
-    "no-unused-variable": true,
-    "no-unreachable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-var-requires": true,
@@ -76,6 +74,7 @@
     ],
     "radix": true,
     "semicolon": [true, "always"],
+<<<<<<< HEAD
     "switch-default": true,
     "trailing-comma": [
       false,
@@ -122,6 +121,14 @@
     "component-selector-name": [true, "kebab-case"],
     "directive-selector-type": [true, "attribute"],
     "component-selector-type": [true, "element"],
+=======
+    "trailing-comma": true,
+    "triple-equals": true,
+    "variable-name": false,
+
+    "directive-selector": [true, "attribute", [], "camelCase"],
+    "component-selector": [true, "element", [], "kebab-case"],
+>>>>>>> 99594f9ec596ffcd85b6bdafdf26d1ba01355807
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
