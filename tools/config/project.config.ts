@@ -13,6 +13,12 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR: string = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+  FONTS_DEST: string = `${this.APP_DEST}/fonts`;
+  FONTS_SRC: string[] = [
+      'node_modules/font-awesome/fonts/**',
+      'node_modules/bootstrap/dist/fonts/**'
+  ];
+
   ENABLE_SCSS: boolean = true;
 
   constructor() {
