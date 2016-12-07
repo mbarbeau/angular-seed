@@ -28,6 +28,17 @@ export class ProjectConfig extends SeedConfig {
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
+    Object.assign(this.SYSTEM_CONFIG_DEV.paths, {
+       'ng2-translate': `${this.APP_BASE}node_modules/ng2-translate/bundles/`
+    });
+
+    Object.assign(this.SYSTEM_CONFIG_DEV.packages, {
+       'ng2-translate': {
+          main: 'index.js',
+          defaultExtension: 'js'
+       }
+    });
+
     let api = this.PLUGIN_CONFIGS['environment-config-json']['API'];
     if (api) {
       this.PLUGIN_CONFIGS['browser-sync']['middleware'] = [

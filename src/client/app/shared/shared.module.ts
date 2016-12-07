@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import {Http} from '@angular/http';
 
 import { CoreModule } from "../core";
 
@@ -6,15 +7,24 @@ import { NameListService } from './name-list/index';
 
 import { AuthModule } from './auth/index';
 
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 
-/**
- * Do not specify providers for modules that might be imported by a lazy loaded module.
- */
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
 
 @NgModule({
-  imports: [CoreModule, AuthModule],
+  imports: [
+    CoreModule,
+    AuthModule,
+    TranslateModule.forRoot({
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+    })
+  ],
   declarations: [],
-  exports: [CoreModule, AuthModule]
+  exports: [CoreModule, AuthModule, TranslateModule]
 })
 
 export class SharedModule {
