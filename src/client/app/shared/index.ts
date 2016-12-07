@@ -3,5 +3,6 @@
  */
 export * from './name-list/index';
 export * from './auth/index';
+export * from './map/index';
 export * from './navbar/index';
 export * from './header/index';

@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/index';
-import { MapModule } from '../map/map.module';
+import { MapModule } from '../shared';
 
 @NgModule({
   imports: [CommonModule, HomeRoutingModule, SharedModule, MapModule],

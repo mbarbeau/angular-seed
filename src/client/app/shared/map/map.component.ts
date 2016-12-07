@@ -6,11 +6,6 @@ declare let ol: any;
    id: string;
 };*/
 
-/*
-import { Ng2ol3MapService, Ng2ol3SidebarService } from '../../services/@index';
-import { Ng2ol3Map, Ng2ol3Config, Ng2ol3View } from '../../models/@index';
-*/
-
 @Component({
   moduleId: module.id,
   selector: 'igo-map',
@@ -61,42 +56,5 @@ export class MapComponent implements AfterViewInit, OnInit {
       }),
       view: this.view
     });
-
-    /*this.map = new Ng2ol3Map({
-        layers: [],
-        target: this.target,
-        view: this.view
-    });*/
-    /*
-    //register the map in the injectable mapService
-    this.mapService.addMap(this.map);
-
-    this.map.addLayersAndLayerGroups(this.options.map.layers);
-    this.mapCreated.emit(this.map);
-    this.map.updateSize();*/
   }
-
-  /*
-      public zoomIn(): void {
-          let zoom = ol.animation.zoom({
-              duration: this.zoomDuration,
-              resolution: this.map.getView().getResolution()
-          });
-          this.map.beforeRender(zoom);
-          this.map.getView().setResolution(this.map.getView().getResolution() * 0.5);
-      }
-
-      public zoomOut(): void {
-          let zoom = ol.animation.zoom({
-              duration: this.zoomDuration,
-              resolution: this.map.getView().getResolution()
-          });
-          this.map.beforeRender(zoom);
-          this.map.getView().setResolution(this.map.getView().getResolution() * 2);
-      }
-
-      public toggleSidebar(): void {
-          this.sidebarToggled.emit();
-      }
-  */
 }
