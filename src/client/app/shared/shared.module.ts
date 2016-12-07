@@ -2,11 +2,9 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { CoreModule } from "../core";
 
-import { HeaderComponent } from './header/index';
-import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
 
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/index';
 
 
 /**
@@ -15,9 +13,10 @@ import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [CoreModule, AuthModule],
-  declarations: [HeaderComponent, NavbarComponent],
-  exports: [CoreModule, AuthModule, HeaderComponent, NavbarComponent]
+  declarations: [],
+  exports: [CoreModule, AuthModule]
 })
+
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
