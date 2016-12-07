@@ -37,14 +37,15 @@ export class AuthComponent implements OnInit {
   }
 
   protected login(values: any) {
-    // TODO: retourner vers la page demandé avant le login
     this.loadingBool = true;
     this.auth.login(values.username, values.password)
       .subscribe(
         (token: string) => {
-            let path = this.router.url;
-            if (path === '/login') {
-                this.router.navigate(['/home']);
+            let redirectUrl = this.auth.redirectUrl;
+            if (!redirectUrl || redirectUrl === '/login') {
+                this.router.navigateByUrl('/');
+            } else {
+              this.router.navigateByUrl(redirectUrl);
             }
         },
         (errors: any) => {

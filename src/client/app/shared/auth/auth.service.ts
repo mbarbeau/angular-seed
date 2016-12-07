@@ -9,6 +9,7 @@ export class AuthService extends BaseRestService {
   protected url: string = "api/auth/login";
   private tokenKey: string = "id_token_igo";
   private token: string;
+  public redirectUrl: string;
 
   constructor(http: Http, @Optional() logger: Logger) {
     super(http, logger);
