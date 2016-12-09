@@ -1,7 +1,7 @@
 import {Injectable, Optional} from "@angular/core";
 import {Response, Headers, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {AuthHttp} from "angular2-jwt";
 import {Logger} from "../../core";
 
 @Injectable()
