@@ -9,13 +9,13 @@ import { MapService } from "./map.service";
 
 export class MapComponent implements AfterViewInit, OnInit {
 
-  @Input() options: any;
+  // @Input() options: any;
 
   @Output() mapCreated = new EventEmitter();
-  @Output() sidebarToggled = new EventEmitter();
+  // @Output() sidebarToggled = new EventEmitter();
 
-  map: any;
-  view: any; // ol.View;
+  map: ol.Map;
+  view: ol.View;
   target: string = 'div-map';
   hasSidebar: boolean;
   zoomDuration: number = 500;
@@ -26,13 +26,7 @@ export class MapComponent implements AfterViewInit, OnInit {
   public ngOnInit(): any {
     this.mapService.getView()
       .subscribe(
-        (options: any) => {
-          this.view = new ol.View({
-            projection: options.view.projection || 'EPSG:3857',
-            center: options.view.center || ol.proj.fromLonLat([-73.5, 47.168464955013], "EPSG:900913"),
-            zoom: options.view.zoom || 7
-          });
-        },
+        (view: ol.View) => this.view = view
         // error => this.errorMessage = <any>error
       );
 

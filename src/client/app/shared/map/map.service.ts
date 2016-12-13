@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import {Logger} from "../../core";
 import {AuthRestService} from "../auth/index";
 
-import { FormatInputIgo } from "./layers/formatInputIgo";
+import { FormatInputIgo } from "./formatInputIgo";
 
 @Injectable()
 export class MapService extends AuthRestService {
@@ -18,22 +18,22 @@ export class MapService extends AuthRestService {
     super(authHttp, logger);
   }
 
-  public getView(id?: string): Observable<{}> {
+  public getView(id?: string): Observable<ol.View> {
     let myHeader = new Headers();
     myHeader.append("Content-Type", "application/json");
 
-    return this.authHttp.get("app/shared/map/view.mock.json", {
+    return <Observable<ol.View>>this.authHttp.get("app/shared/map/view/view.mock.json", {
       headers: myHeader
-    }).map((res: Response) => res.json())
+    }).map((res: Response) => new FormatInputIgo().readView(res.json().view))
       .do(this.handleEyeball)
       .catch(this.handleError);
   }
 
-  public getLayers(id?: string): Observable<{}> {
+  public getLayers(id?: string): Observable<ol.layer.Base[]> {
     let myHeader = new Headers();
     myHeader.append("Content-Type", "application/json");
 
-    return this.authHttp.get("app/shared/map/layers.mock.json", {
+    return <Observable<ol.layer.Base[]>>this.authHttp.get("app/shared/map/layers/layers.mock.json", {
       headers: myHeader
     }).map((res: Response) => new FormatInputIgo().readLayers(res.json().layers))
       .do(this.handleEyeball)
