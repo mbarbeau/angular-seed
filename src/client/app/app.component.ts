@@ -10,6 +10,7 @@ import {TranslateService} from 'ng2-translate';
   moduleId: module.id,
   selector: 'igo-app',
   templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
 })
 
 export class AppComponent {

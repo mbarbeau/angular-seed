@@ -5,7 +5,8 @@ import { MapService } from "./map.service";
 @Component({
   moduleId: module.id,
   selector: 'igo-map',
-  templateUrl: 'map.component.html'
+  templateUrl: 'map.component.html',
+  styleUrls: ['map.component.css']
 })
 
 export class MapComponent implements AfterViewInit, OnInit {
@@ -28,6 +29,11 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   public ngOnInit(): any {
+
+
+  }
+
+  public ngAfterViewInit(): any {
     this.mapService.getView(this.contextId)
       .subscribe(
         (view: ol.View) => this.view = view
@@ -41,11 +47,8 @@ export class MapComponent implements AfterViewInit, OnInit {
         );
   }
 
-  public ngAfterViewInit(): any {
-
-  }
-
   private initMap(layers: any): any {
+
     // TODO: garder l'information dans un service
     this.map = new ol.Map({
       layers: layers,

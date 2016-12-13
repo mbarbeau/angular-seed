@@ -1,8 +1,9 @@
 $color-red: #ff99ff;
 
 :host {
+  height: 100%;
   display: block;
-  padding: 0 16px;
+  padding: 0;
   color: $color-red;
 }
 
