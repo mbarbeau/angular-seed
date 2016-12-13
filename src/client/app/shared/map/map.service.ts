@@ -10,7 +10,7 @@ import { FormatInputIgo } from "./formatInputIgo";
 
 @Injectable()
 export class MapService extends AuthRestService {
-  protected url: string = "";
+  protected url: string = "app/shared/map/";
   constructor(
     authHttp: AuthHttp,
     logger: Logger
@@ -18,22 +18,22 @@ export class MapService extends AuthRestService {
     super(authHttp, logger);
   }
 
-  public getView(id?: string): Observable<ol.View> {
+  public getView(id: string = ""): Observable<ol.View> {
     let myHeader = new Headers();
     myHeader.append("Content-Type", "application/json");
 
-    return <Observable<ol.View>>this.authHttp.get("app/shared/map/view/view.mock.json", {
+    return <Observable<ol.View>>this.authHttp.get(`${this.url}view/view${id}.mock.json`, {
       headers: myHeader
     }).map((res: Response) => new FormatInputIgo().readView(res.json().view))
       .do(this.handleEyeball)
       .catch(this.handleError);
   }
 
-  public getLayers(id?: string): Observable<ol.layer.Base[]> {
+  public getLayers(id: string = ""): Observable<ol.layer.Base[]> {
     let myHeader = new Headers();
     myHeader.append("Content-Type", "application/json");
 
-    return <Observable<ol.layer.Base[]>>this.authHttp.get("app/shared/map/layers/layers.mock.json", {
+    return <Observable<ol.layer.Base[]>>this.authHttp.get(`${this.url}layers/layers${id}.mock.json`, {
       headers: myHeader
     }).map((res: Response) => new FormatInputIgo().readLayers(res.json().layers))
       .do(this.handleEyeball)

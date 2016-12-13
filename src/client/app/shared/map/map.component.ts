@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterContentInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router'
 import { MapService } from "./map.service";
 
 @Component({
@@ -20,17 +21,20 @@ export class MapComponent implements AfterViewInit, OnInit {
   hasSidebar: boolean;
   zoomDuration: number = 500;
   sidebarCollapsible: boolean = false;
+  contextId: string;
 
-  constructor(private mapService: MapService) {}
+  constructor(private mapService: MapService, private route: ActivatedRoute) {
+    this.route.params.subscribe((params: Params) => this.contextId = params['id']);
+  }
 
   public ngOnInit(): any {
-    this.mapService.getView()
+    this.mapService.getView(this.contextId)
       .subscribe(
         (view: ol.View) => this.view = view
         // error => this.errorMessage = <any>error
       );
 
-      this.mapService.getLayers()
+      this.mapService.getLayers(this.contextId)
         .subscribe(
           (layers: ol.layer.Base[]) => this.initMap(layers),
           // error => this.errorMessage = <any>error
