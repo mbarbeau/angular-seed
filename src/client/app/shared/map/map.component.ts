@@ -30,10 +30,6 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   public ngOnInit(): any {
 
-
-  }
-
-  public ngAfterViewInit(): any {
     this.mapService.getView(this.contextId)
       .subscribe(
         (view: ol.View) => this.view = view
@@ -42,9 +38,13 @@ export class MapComponent implements AfterViewInit, OnInit {
 
       this.mapService.getLayers(this.contextId)
         .subscribe(
-          (layers: ol.layer.Base[]) => this.initMap(layers),
+          (layers: ol.layer.Base[]) => setTimeout(()=>this.initMap(layers), 100),
           // error => this.errorMessage = <any>error
         );
+  }
+
+  public ngAfterViewInit(): any {
+
   }
 
   private initMap(layers: any): any {
@@ -54,6 +54,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       layers: layers,
       target: this.target,
       controls: ol.control.defaults({
+        zoom: false,
         attributionOptions: ({
           collapsible: false
         })

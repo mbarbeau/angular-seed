@@ -20,13 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p {
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 20px;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
 
 ul {
   margin: 10px 0 0;
@@ -60,4 +53,8 @@ button {
 
 button:hover {
   background-color: #28739e;
+}
+
+.ol-attribution {
+  margin-bottom: 20px;
 }
