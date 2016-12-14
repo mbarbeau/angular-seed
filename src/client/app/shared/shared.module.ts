@@ -1,10 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {Http} from '@angular/http';
-
 import { CoreModule } from "../core";
-
-import { NameListService } from './name-list/index';
-
 import { AuthModule } from './auth/index';
 
 import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
@@ -31,7 +27,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [NameListService]
+      providers: []
     };
   }
 }
