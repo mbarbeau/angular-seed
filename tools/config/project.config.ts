@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
-// import { ExtendPackages } from './seed.config.interfaces';
+import { IExtendPackages } from './seed.config.interfaces';
 
 const proxy = require('proxy-middleware');
 
@@ -27,18 +27,6 @@ export class ProjectConfig extends SeedConfig {
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
-
-    Object.assign(this.SYSTEM_CONFIG_DEV.paths, {
-       'ng2-translate': `${this.APP_BASE}node_modules/ng2-translate/bundles/ng2-translate.umd.js`,
-       'angular2-jwt': `${this.APP_BASE}node_modules/angular2-jwt/angular2-jwt`
-    });
-
-    /*Object.assign(this.SYSTEM_CONFIG_DEV.packages, {
-       'ng2-translate': {
-          main: 'index.js',
-          defaultExtension: 'js'
-       }
-    });*/
 
     let api = this.PLUGIN_CONFIGS['environment-config-json']['API'];
     if (api) {
@@ -72,14 +60,20 @@ export class ProjectConfig extends SeedConfig {
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
 
-    // Add packages (e.g. ng2-translate)
-    // let additionalPackages: ExtendPackages[] = [{
-    //   name: 'ng2-translate',
-    //   // Path to the package's bundle
-    //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
-    // }];
-    //
-    // this.addPackagesBundles(additionalPackages);
+    // Add packages
+    let additionalPackages: IExtendPackages[] = [{
+       name: 'ng2-translate',
+       path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
+       /* packageMeta: {
+            main: 'index.js',
+            defaultExtension: 'js'
+       } */
+     }, {
+       name: 'angular2-jwt',
+       path: 'node_modules/angular2-jwt/angular2-jwt'
+     }];
+
+    this.addPackagesBundles(additionalPackages);
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
