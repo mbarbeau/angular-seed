@@ -1,6 +1,10 @@
-import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterContentInit,
+        ViewContainerRef, ViewChild, ComponentRef, ComponentFactory, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
+
 import { ActivatedRoute, Params } from '@angular/router'
 import { ToolsService } from "./tools.service";
+
+import * as ext from "../../extensions/outilsExt";
 
 @Component({
   moduleId: module.id,
@@ -10,11 +14,15 @@ import { ToolsService } from "./tools.service";
 })
 
 export class ToolsComponent implements AfterViewInit, OnInit {
+  @ViewChild('target', {read: ViewContainerRef}) target: any;
+  cmpRef: any; // ComponentRef;
+  private isViewInitialized:boolean = false;
 
   private contextId: string;
   protected hasLocationTool: boolean = false;
 
-  constructor(private toolsService: ToolsService, private route: ActivatedRoute) {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,
+      private cdRef:ChangeDetectorRef, private toolsService: ToolsService, private route: ActivatedRoute) {
     this.route.params.subscribe((params: Params) => this.contextId = params['id']);
   }
 
@@ -27,14 +35,47 @@ export class ToolsComponent implements AfterViewInit, OnInit {
         );
   }
 
-  public ngAfterViewInit(): any {
-
-  }
-
   private initTools(tools: any): any {
     if (tools[0] && tools[0].type === "location") {
       this.hasLocationTool = true;
     }
   }
+
+
+  updateComponent() {
+    if(!this.isViewInitialized) {
+      return;
+    }
+    if(this.cmpRef) {
+      this.cmpRef.destroy();
+    }
+
+    for (let entry of ['GeolocationComponent']) {
+      let entryComp = ext[entry]
+      let factory = this.componentFactoryResolver.resolveComponentFactory(entryComp);
+      this.cmpRef = this.target.createComponent(factory)
+    }
+    // to access the created instance use
+    // this.cmpRef.instance.someProperty = 'someValue';
+    // this.cmpRef.instance.fsomeOutput.subscribe(val => doSomething());
+    this.cdRef.detectChanges();
+  }
+
+  ngOnChanges() {
+    this.updateComponent();
+  }
+
+  ngAfterViewInit() {
+    this.isViewInitialized = true;
+    this.updateComponent();
+  }
+
+  ngOnDestroy() {
+    if(this.cmpRef) {
+      this.cmpRef.destroy();
+    }
+  }
+
+
 
 }
