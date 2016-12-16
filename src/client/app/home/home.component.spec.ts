@@ -1,81 +1,47 @@
-import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, ActivatedRoute, Params } from '@angular/router';
-import {
-  async
-} from '@angular/core/testing';
-import {
-  BaseRequestOptions,
-  ConnectionBackend,
-  Http, HttpModule
-} from '@angular/http';
+import { BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions } from '@angular/http';
+import { TestBed, async } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
 
-import { NameListService } from '../shared/index';
-import { HomeModule } from './home.module';
+import { Observable } from 'rxjs/Observable';
+
+import { NameListService } from './name-list.service';
 
 export function main() {
-  describe('Home component', () => {
-    // setting module for testing
-    // Disable old forms
+  describe('NameList Service', () => {
+    let nameListService: NameListService;
+    let mockBackend: MockBackend;
+
     beforeEach(() => {
+
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterModule, HttpModule, HomeModule],
-        declarations: [TestComponent],
         providers: [
           NameListService,
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              params: {
-                subscribe: ((fn: (value: Params) => void) => fn({
-                  yourData: 'yolo'
-                }))
-              }
-            }
-          },
-          BaseRequestOptions,
           MockBackend,
-          {provide: Http, useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
-              return new Http(backend, defaultOptions);
-            },
+          BaseRequestOptions,
+          {
+            provide: Http,
+            useFactory: (backend: ConnectionBackend, options: BaseRequestOptions) => new Http(backend, options),
             deps: [MockBackend, BaseRequestOptions]
-          },
+          }
         ]
       });
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            fixture.detectChanges();
+    it('should return an Observable when get called', async(() => {
+      expect(TestBed.get(NameListService).get()).toEqual(jasmine.any(Observable));
+    }));
 
-            let homeInstance = fixture.debugElement.children[0].componentInstance;
-            let homeDOMEl = fixture.debugElement.children[0].nativeElement;
-            expect(homeDOMEl.querySelectorAll('igo-map').length).toEqual(1);
+    it('should resolve to list of names when get called', async(() => {
+      let nameListService = TestBed.get(NameListService);
+      let mockBackend = TestBed.get(MockBackend);
 
-            /*expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(0);
+      mockBackend.connections.subscribe((c: any) => {
+        c.mockRespond(new Response(new ResponseOptions({ body: '["Dijkstra", "Hopper"]' })));
+      });
 
-            homeInstance.newName = 'Minko';
-            homeInstance.addName();
-
-            fixture.detectChanges();
-
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(1);
-            expect(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');*/
-          });
-
-      }));
+      nameListService.get().subscribe((data: any) => {
+        expect(data).toEqual(['Dijkstra', 'Hopper']);
+      });
+    }));
   });
 }
-
-@Component({
-  selector: 'test-cmp',
-  template: '<sd-home></sd-home>'
-})
-class TestComponent { }
