@@ -20,6 +20,7 @@ export class ToolsComponent implements AfterViewInit, OnInit {
 
   private contextId: string;
   protected hasLocationTool: boolean = false;
+  private tools: any = [];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
       private cdRef:ChangeDetectorRef, private toolsService: ToolsService, private route: ActivatedRoute) {
@@ -30,16 +31,19 @@ export class ToolsComponent implements AfterViewInit, OnInit {
 
     this.toolsService.get(this.contextId)
       .subscribe(
-        (tools: any) => this.initTools(tools),
+        (tools: any) => {
+          this.tools = tools;
+          this.updateComponent();
+        },
           // error => this.errorMessage = <any>error
-        );
+      );
   }
 
-  private initTools(tools: any): any {
+  /*private initTools(tools: any): any {
     if (tools[0] && tools[0].type === "location") {
       this.hasLocationTool = true;
     }
-  }
+  }*/
 
 
   updateComponent() {
@@ -50,8 +54,12 @@ export class ToolsComponent implements AfterViewInit, OnInit {
       this.cmpRef.destroy();
     }
 
-    for (let entry of ['GeolocationComponent']) {
-      let entryComp = ext[entry]
+    for (let entry of this.tools) {
+      let compStr: string = entry.type + 'Component';
+      let entryComp: any = (<any>ext)[compStr]; // TODO: ajout des outils du coeur
+      if (!entryComp) {
+        continue;
+      }
       let factory = this.componentFactoryResolver.resolveComponentFactory(entryComp);
       this.cmpRef = this.target.createComponent(factory)
     }
