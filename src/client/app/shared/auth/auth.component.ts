@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
       .subscribe(
         (token: string) => {
             let redirectUrl = this.auth.redirectUrl;
-            if (!redirectUrl || redirectUrl === '/login') {
+            if (!redirectUrl || redirectUrl === '/login') {
                 this.router.navigateByUrl('/');
             } else {
               this.router.navigateByUrl(redirectUrl);

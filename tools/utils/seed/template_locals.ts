@@ -12,8 +12,8 @@ import Config from '../../config';
  * and the environment specific overrides (for instance if env=dev then as defined in env/dev.ts).
  */
 export class TemplateLocalsBuilder {
-  private stringifySystemConfigDev = false;
-  private stringifyEnvConfig = true;
+  private stringifySystemConfigDev: boolean = false;
+  private stringifyEnvConfig: boolean = true;
 
   withStringifiedSystemConfigDev() {
     this.stringifySystemConfigDev = true;
@@ -51,6 +51,7 @@ export class TemplateLocalsBuilder {
     try {
       config = JSON.parse(JSON.stringify(require(configPath)));
     } catch (e) {
+      // tslint:disable-next-line: no-null-keyword
       config = null;
       util.log(util.colors.red(e.message));
     }

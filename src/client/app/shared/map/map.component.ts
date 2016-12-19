@@ -1,5 +1,5 @@
-import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterContentInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router'
+import { Component, Input, Output, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MapService } from "./map.service";
 
 @Component({
@@ -13,7 +13,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   // @Input() options: any;
 
-  @Output() mapCreated = new EventEmitter();
+  // @Output() mapCreated = new EventEmitter();
   // @Output() sidebarToggled = new EventEmitter();
 
   map: ol.Map;
@@ -36,15 +36,15 @@ export class MapComponent implements AfterViewInit, OnInit {
         // error => this.errorMessage = <any>error
       );
 
-      this.mapService.getLayers(this.contextId)
+    this.mapService.getLayers(this.contextId)
         .subscribe(
-          (layers: ol.layer.Base[]) => setTimeout(()=>this.initMap(layers), 100),
+          (layers: ol.layer.Base[]) => setTimeout(() => this.initMap(layers), 100),
           // error => this.errorMessage = <any>error
         );
   }
 
   public ngAfterViewInit(): any {
-
+      //
   }
 
   private initMap(layers: any): any {

@@ -30,11 +30,11 @@ export class FormatInputIgo {
       return undefined;
     }
 
-    interface ProtocoleMap {
-      [key: string]: (layerInput: ILayerInput) => ol.layer.Base
+    interface IProtocoleMap {
+      [key: string]: (layerInput: ILayerInput) => ol.layer.Base;
     }
 
-    let functionProtocoleMap: ProtocoleMap = {
+    let functionProtocoleMap: IProtocoleMap = {
       OSM: this.createLayerOSM,
       WMS: this.createLayerWMS
     };

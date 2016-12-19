@@ -1,6 +1,7 @@
 import * as util from 'gulp-util';
 import { join } from 'path';
 
+// tslint:disable-next-line: no-var-requires
 let fs = require('fs');
 
 

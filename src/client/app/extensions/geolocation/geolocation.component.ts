@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterContentInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   moduleId: module.id,

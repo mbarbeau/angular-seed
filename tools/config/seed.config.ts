@@ -215,14 +215,14 @@ export class SeedConfig {
   /**
    * Seed tasks which are composition of other tasks.
    */
-  SEED_COMPOSITE_TASKS = join(process.cwd(), this.TOOLS_DIR, 'config', 'seed.tasks.json');
+  SEED_COMPOSITE_TASKS: string = join(process.cwd(), this.TOOLS_DIR, 'config', 'seed.tasks.json');
 
   /**
    * Project tasks which are composition of other tasks
    * and aim to override the tasks defined in
    * SEED_COMPOSITE_TASKS.
    */
-  PROJECT_COMPOSITE_TASKS = join(process.cwd(), this.TOOLS_DIR, 'config', 'project.tasks.json');
+  PROJECT_COMPOSITE_TASKS: string = join(process.cwd(), this.TOOLS_DIR, 'config', 'project.tasks.json');
 
   /**
    * The destination folder for the generated documentation.

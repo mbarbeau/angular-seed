@@ -1,6 +1,7 @@
 import * as gulp from 'gulp';
 import { argv } from 'yargs';
 
+// tslint:disable-next-line: no-var-requires
 require('../gulpfile');
 
 const TASK = argv['task'];

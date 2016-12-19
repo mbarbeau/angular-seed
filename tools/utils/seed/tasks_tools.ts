@@ -26,6 +26,7 @@ function validateTasks(tasks: any) {
         tasks[taskName].some((t: any) => typeof t !== 'string')) {
          return taskName;
        }
+       // tslint:disable-next-line: no-null-keyword
        return null;
     }).filter((taskName: string) => !!taskName);
 }
@@ -33,6 +34,7 @@ function validateTasks(tasks: any) {
 function registerTasks(tasks: any) {
   Object.keys(tasks)
     .forEach((t: string) => {
+      // tslint:disable-next-line: no-null-keyword
       gulp.task(t, (done: any) => runSequence.apply(null, [...tasks[t], done]));
     });
 }

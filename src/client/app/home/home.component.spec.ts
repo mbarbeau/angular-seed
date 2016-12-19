@@ -32,14 +32,14 @@ export function main() {
     }));
 
     it('should resolve to list of names when get called', async(() => {
-      let nameListService = TestBed.get(NameListService);
-      let mockBackend = TestBed.get(MockBackend);
+      let nameListService2 = TestBed.get(NameListService);
+      let mockBackend2 = TestBed.get(MockBackend);
 
-      mockBackend.connections.subscribe((c: any) => {
+      mockBackend2.connections.subscribe((c: any) => {
         c.mockRespond(new Response(new ResponseOptions({ body: '["Dijkstra", "Hopper"]' })));
       });
 
-      nameListService.get().subscribe((data: any) => {
+      nameListService2.get().subscribe((data: any) => {
         expect(data).toEqual(['Dijkstra', 'Hopper']);
       });
     }));

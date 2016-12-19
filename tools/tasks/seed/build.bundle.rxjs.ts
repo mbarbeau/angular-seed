@@ -2,6 +2,7 @@
  * Temporary fix. See https://github.com/angular/angular/issues/9359
  */
 
+ // tslint:disable-next-line: no-var-requires
 const Builder = require('systemjs-builder');
 
 export = (done: any) => {

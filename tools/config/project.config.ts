@@ -3,6 +3,7 @@ import { join } from 'path';
 import { SeedConfig } from './seed.config';
 import { IExtendPackages } from './seed.config.interfaces';
 
+// tslint:disable-next-line: no-var-requires
 const proxy = require('proxy-middleware');
 
 /**
@@ -64,13 +65,13 @@ export class ProjectConfig extends SeedConfig {
     let additionalPackages: IExtendPackages[] = [{
        name: 'ng2-translate',
        path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
-       /* packageMeta: {
-            main: 'index.js',
-            defaultExtension: 'js'
-       } */
      }, {
        name: 'angular2-jwt',
-       path: 'node_modules/angular2-jwt/angular2-jwt'
+       path: 'node_modules/angular2-jwt',
+       packageMeta: {
+            main: './angular2-jwt.js',
+            defaultExtension: 'js'
+       }
      }];
 
     this.addPackagesBundles(additionalPackages);
