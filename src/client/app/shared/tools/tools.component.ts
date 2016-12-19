@@ -4,6 +4,7 @@ import { Component, Input, Output, OnInit, EventEmitter, AfterViewInit, AfterCon
 import { ActivatedRoute, Params } from '@angular/router'
 import { ToolsService } from "./tools.service";
 
+import * as toolsComponent from "./index";
 import * as ext from "../../extensions/outilsExt";
 
 @Component({
@@ -56,7 +57,7 @@ export class ToolsComponent implements AfterViewInit, OnInit {
 
     for (let entry of this.tools) {
       let compStr: string = entry.type + 'Component';
-      let entryComp: any = (<any>ext)[compStr]; // TODO: ajout des outils du coeur
+      let entryComp: any = (<any>ext)[compStr] || (<any>toolsComponent)[compStr];
       if (!entryComp) {
         continue;
       }
