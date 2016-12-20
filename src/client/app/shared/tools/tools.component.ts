@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, OnChanges, OnDestroy, EventEmitter, AfterViewInit, AfterContentInit,
+import { Component, Input, Output, OnInit, OnChanges, OnDestroy, EventEmitter, AfterViewInit, AfterContentInit, SimpleChanges,
         ViewContainerRef, ViewChild, ComponentRef, ComponentFactory, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
 
 import { ActivatedRoute, Params } from '@angular/router';
@@ -30,7 +30,7 @@ export class ToolsComponent implements AfterViewInit, OnChanges, OnDestroy, OnIn
     this.route.params.subscribe((params: Params) => this.contextId = params['id']);
   }
 
-  public ngOnInit(): any {
+  public ngOnInit() {
 
     this.toolsService.get(this.contextId)
       .subscribe(
@@ -72,7 +72,7 @@ export class ToolsComponent implements AfterViewInit, OnChanges, OnDestroy, OnIn
     this.cdRef.detectChanges();
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.updateComponent();
   }
 

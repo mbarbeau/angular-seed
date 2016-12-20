@@ -17,8 +17,8 @@ export class AuthComponent implements OnInit {
   private loadingBool: boolean = false;
 
   constructor(
+    public auth: AuthService,
     private fb: FormBuilder,
-    private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {

@@ -12,12 +12,12 @@ import { AuthService} from "../auth/index";
 })
 
 export class HeaderComponent {
-  protected title: string = "<%= APP_TITLE %>";
-  protected version: string = "<%= VERSION %>";
+  public title: string = "<%= APP_TITLE %>";
+  public version: string = "<%= VERSION %>";
 
   constructor(public auth: AuthService) { }
 
-  private get userName() {
+  public get userName() {
     if (!this.auth.isAuthenticated) {
       return "";
     }
