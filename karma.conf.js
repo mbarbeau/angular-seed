@@ -42,6 +42,7 @@ module.exports = function (config) {
       'node_modules/openlayers/dist/ol-debug.js',
 
       { pattern: 'node_modules/angular2-jwt/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
 
       // RxJs.
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },

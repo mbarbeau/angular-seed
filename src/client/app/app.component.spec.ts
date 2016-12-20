@@ -15,9 +15,11 @@ import {
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { MapComponent } from './map/map.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SharedModule } from "./shared/shared.module";
+import { MapModule } from "./shared/map/index";
+import { ToolsModule } from "./shared/tools/index";
 
 export function main() {
 
@@ -29,8 +31,8 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [TestComponent, HeaderComponent, MapComponent,
+        imports: [FormsModule, RouterTestingModule.withRoutes(config), SharedModule, MapModule, ToolsModule],
+        declarations: [TestComponent, HeaderComponent,
           NavbarComponent, AppComponent,
           HomeComponent, AboutComponent],
         providers: [
