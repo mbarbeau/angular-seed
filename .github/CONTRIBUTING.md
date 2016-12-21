@@ -1,15 +1,14 @@
-## Submitting Pull Requests
+## Soumettre un Pull Request
 
-**Please follow these basic steps to simplify pull request reviews - if you don't you'll probably just be asked to anyway.**
-
-* Please rebase your branch against the current master
-* Run ```npm install``` to make sure your development dependencies are up-to-date
-* Please ensure that the test suite passes **and** that code is lint free before submitting a PR by running:
+* Faire un rebase de votre branche
+* Exécuter ```npm install``` pour être sûr que les dépendances soient à jour
+* S'assurer que les tests sont toujours valides en exécutant:
  * ```npm test```
-* If you've added new functionality, **please** include tests which validate its behaviour
-* Make reference to possible [issues](https://github.com/mgechev/angular2-seed/issues) on PR comment
+* Ajouter des tests pour les nouvelles fonctionnalités
+* Si possible, indiquer les issues concernés par le pull request
 
-## Submitting bug reports
+## Soumettre un bogue
 
-* Please detail the affected browser(s) and operating system(s)
-* Please be sure to state which version of node **and** npm you're using
+* Détailler les navigateurs et les sytèmes d'exploitation affectés
+* Indiquer la version de node utilisée
+* Décrire la méthode pour reproduire le bogue

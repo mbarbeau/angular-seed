@@ -1,6 +1,6 @@
 # Tools documentation
 
-This document contains information about the tools section of the `angular2-seed`.
+This document contains information about the tools section.
 
 ## General Information
 
@@ -14,7 +14,7 @@ The root of this folder contains the following files:
 | `README.md`  | The documentation of the tools section |
 | `utils.ts`   | Exports the utilities provided by the seed barrel file (`/utils/seed.utils.ts`) and the project specific barrel file (`/utils/project.utils.ts`) |
 
-The subfolders provide further folders to distinguish between files which are provided by the seed (located in the corresponding `seed` folder) and files which can be specific by project (to be located in the corresponding `project` folder). This helps you to include updates from the `angular2-seed` without causing conflicts with you personal customisations.
+The subfolders provide further folders to distinguish between files which are provided by the seed (located in the corresponding `seed` folder) and files which can be specific by project (to be located in the corresponding `project` folder).
 
 ## Configuration
 
@@ -88,4 +88,3 @@ The seed provides the following utilities:
 | `template_locals.ts`   | Provides a utility for template locals |
 | `tsproject.ts`         | Provides a utility to configure the TypeScript transpilation |
 | `watch.ts`             | Provides a utility to watch for file changes and notify live reloads |
-

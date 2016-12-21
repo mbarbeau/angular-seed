@@ -11,7 +11,7 @@ if (!TASK) {
 }
 
 console.log('**********************');
-console.log('* angular2-seed tools ');
+console.log('* Igo2 tools ');
 console.log('* debugging task:', TASK);
 console.log('**********************');
 
