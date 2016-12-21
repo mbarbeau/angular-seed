@@ -1,7 +1,7 @@
 import { IEnvConfig } from './env-config.interface';
 
 const BaseConfig: IEnvConfig = {
-  APP_BASE: "/seed/"
+  APP_BASE: "/igo2/"
 };
 
 export = BaseConfig;

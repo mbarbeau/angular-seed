@@ -13,11 +13,7 @@ import { IBuildType, IExtendPackages, InjectableDependency } from './seed.config
  * Your application-specific configurations should be
  * in project.config.ts. If you need to change any tasks
  * from "./tasks" overwrite them by creating a task with the
- * same name in "./projects". For further information take a
- * look at the documentation:
- *
- * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
- * 2) https://github.com/mgechev/angular2-seed/wiki
+ * same name in "./projects".
  *
  * ****************************************************************
  */
@@ -164,7 +160,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE: string = 'Welcome to angular2-seed!';
+  APP_TITLE: string = 'IGO 2';
 
   /**
    * The base folder of the applications source files.

@@ -2,7 +2,7 @@ import { IEnvConfig } from './env-config.interface';
 
 const DevConfig: IEnvConfig = {
   ENV: 'DEV',
-  APP_BASE: "/seed-dev/",
+  APP_BASE: "/igo2-dev/",
   API: {
     protocol: "http:",
     host: "spssogl97d.sso.msp.gouv.qc.ca",
