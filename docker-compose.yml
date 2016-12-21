@@ -2,13 +2,13 @@ version: '2'
 
 services:
 
-  angular-seed:
+  igo2:
     build:
       context: .
-      dockerfile: ./.docker/angular-seed.development.dockerfile
+      dockerfile: ./.docker/igo2.development.dockerfile
     command: npm start
-    container_name: angular-seed-start
-    image: angular-seed
+    container_name: igo2-start
+    image: igo2
     networks:
       - dev-network
     ports:

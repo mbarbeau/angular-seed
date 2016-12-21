@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
-  "version": "0.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "name": "igo2",
+  "version": "0.1.0",
+  "description": "Infrastructure géomatique ouverte 2",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/infra-geo-ouverte/igo2"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -39,8 +39,7 @@
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
-  "license": "MIT",
+  "license": "LiLiQ-R",
   "devDependencies": {
     "@angular/compiler-cli": "~2.2.3",
     "@angular/platform-server": "~2.2.3",
