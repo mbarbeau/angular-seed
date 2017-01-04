@@ -4,8 +4,6 @@ import { MockBackend } from '@angular/http/testing';
 
 import { Observable } from 'rxjs/Observable';
 
-// import { NameListService } from './name-list.service';
-
 export function main() {
   describe('NameList Service', () => {
     // let nameListService: NameListService;
