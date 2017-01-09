@@ -1,9 +1,10 @@
+/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 import { browser, element, by } from 'protractor';
 
 describe('App', () => {
 
   beforeEach(async () => {
-    return await browser.get('/igo-dev/');
+    return await browser.get('/');
   });
 
   it('should have a title', () => {

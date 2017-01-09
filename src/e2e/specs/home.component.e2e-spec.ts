@@ -3,7 +3,7 @@ import { browser, element, by } from 'protractor';
 describe('Home', () => {
 
   beforeEach(async () => {
-    return await browser.get('/igo-dev/');
+    return await browser.get('/');
   });
 
   it('should not have an input', () => {
