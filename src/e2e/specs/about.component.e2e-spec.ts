@@ -1,7 +1,8 @@
 describe('About', () => {
 
   beforeEach(async () => {
-    return await browser.get('/about');
+    browser.ignoreSynchronization = true;
+    return await browser.get('/igo2/login');
   });
 
   it('should have correct feature heading', () => {
