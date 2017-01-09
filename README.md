@@ -16,7 +16,7 @@ IGO has multiple features, such as Web GIS viewer, layer tree Manager and many m
 Since this project is open source, anyone can contribute as long as they share their work on the same open source [LICENCE LGPL-Style](LICENSE_ENGLISH.txt). All contributors in IGO keep their property rights.
 
 ***
-
+ 
 ---
 ## Table des matières
 
