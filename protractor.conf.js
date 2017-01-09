@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: 'http://localhost:5555/igo/',
+  baseUrl: 'http://localhost:5555/',
 
   specs: [
     './dist/e2e/**/*.e2e-spec.js'
