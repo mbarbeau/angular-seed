@@ -1,7 +1,7 @@
 describe('Home', () => {
 
   beforeEach(async () => {
-    return await browser.get('/');
+    return await browser.get('/igo-dev/');
   });
 
   it('should not have an input', () => {

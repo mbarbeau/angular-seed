@@ -1,7 +1,7 @@
 describe('App', () => {
 
   beforeEach(async () => {
-    return await browser.get('/');
+    return await browser.get('/igo-dev/');
   });
 
   it('should have a title', () => {
