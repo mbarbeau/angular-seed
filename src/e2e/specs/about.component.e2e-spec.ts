@@ -2,7 +2,7 @@ describe('About', () => {
 
   beforeEach(async () => {
     browser.ignoreSynchronization = true;
-    return await browser.get('/igo2/login');
+    return await browser.get('/');
   });
 
   it('should have correct feature heading', () => {
