@@ -1,7 +1,6 @@
 describe('About', () => {
 
   beforeEach(async () => {
-    browser.ignoreSynchronization = true;
     return await browser.get('/');
   });
 
