@@ -27,7 +27,7 @@ const config = {
   },
 
   onPrepare: function() {
-    browser.ignoreSynchronization = false;
+    browser.ignoreSynchronization = true;
   },
 
 
