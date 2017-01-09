@@ -100,9 +100,6 @@ $ docker-compose -f docker-compose.production.yml up -d igo2-nginx
 
 Ouvrir un navigateur  http://localhost:5555
 
-
-
-
 ## Structures des répertoires
 
 ```
