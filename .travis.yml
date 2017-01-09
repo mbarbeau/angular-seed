@@ -10,7 +10,6 @@ addons:
 
 os:
   - linux
-  - osx
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
@@ -28,7 +27,7 @@ after_failure:
   - cat /home/travis/build/mgechev/angular-seed/npm-debug.log
 
 branches:
-  only: 
+  only:
     - master
     - dev
 
