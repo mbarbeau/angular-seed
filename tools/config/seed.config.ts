@@ -23,8 +23,9 @@ import { IBuildType, IExtendPackages, InjectableDependency } from './seed.config
  * @type {Environments}
  */
 export const BUILD_TYPES: IBuildType = {
-  DEVELOPMENT: 'dev',
-  PRODUCTION: 'prod'
+  DEVELOPMENT: 'base',
+  PRODUCTION: 'prod',
+  TEST: 'test'
 };
 
 
@@ -684,6 +685,8 @@ function getBuildType() {
   let prodKeyword = !!base.filter(o => o.indexOf(BUILD_TYPES.PRODUCTION) >= 0).pop();
   if ((base && prodKeyword) || type === BUILD_TYPES.PRODUCTION) {
     return BUILD_TYPES.PRODUCTION;
+  } else if (base[0] === 'build.e2e') {
+    return BUILD_TYPES.TEST;
   } else {
     return BUILD_TYPES.DEVELOPMENT;
   }

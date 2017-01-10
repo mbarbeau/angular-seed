@@ -11,6 +11,7 @@ export interface InjectableDependency {
 export interface IBuildType {
   DEVELOPMENT: string;
   PRODUCTION: string;
+  TEST: string;
   [key: string]: string;
 }
 
