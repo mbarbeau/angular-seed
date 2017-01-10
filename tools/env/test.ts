@@ -1,7 +1,8 @@
 import { IEnvConfig } from './env-config.interface';
 
 const BaseConfig: IEnvConfig = {
-  APP_BASE: "/"
+  ENV: 'TEST',
+  APP_BASE: '/'
 };
 
 export = BaseConfig;
