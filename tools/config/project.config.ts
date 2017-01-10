@@ -26,6 +26,8 @@ export class ProjectConfig extends SeedConfig {
     super();
     this.APP_TITLE = 'IGO 2';
 
+    console.log(this.APP_BASE);
+
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
