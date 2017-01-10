@@ -8,7 +8,7 @@ describe('App', () => {
   });
 
   it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('IGO 2.0');
+    expect(browser.getTitle()).toEqual('IGO 2');
   });
 
   /*it('should have <nav>', () => {
